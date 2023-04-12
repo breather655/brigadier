@@ -10,6 +10,9 @@ public class StringReader implements ImmutableStringReader {
     private static final char SYNTAX_DOUBLE_QUOTE = '"';
     private static final char SYNTAX_SINGLE_QUOTE = '\'';
 
+    private static final int HANGUL_UNICODE_START = 0xAC00;
+    private static final int HANGUL_UNICODE_END = 0xD7AF;
+
     private final String string;
     private int cursor;
 
@@ -170,6 +173,7 @@ public class StringReader implements ImmutableStringReader {
         return c >= '0' && c <= '9'
             || c >= 'A' && c <= 'Z'
             || c >= 'a' && c <= 'z'
+            || c >= HANGUL_UNICODE_START && c <= HANGUL_UNICODE_END
             || c == '_' || c == '-'
             || c == '.' || c == '+';
     }
